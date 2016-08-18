@@ -1,0 +1,5 @@
+#container.boxed-layout {
+	background-image: url("path-to-my-image.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
