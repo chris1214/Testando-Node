@@ -1,11 +1,10 @@
-var connectionFactory = require('../infra/connectionFactory.js');
 
 module.exports = function(app) {
     app.get('/produtos', function(req,res){
         console.log("testando");
-        var connection = connectionFactory();
+        var connection = app.infra.connectionFactory();
 
-        connection.query('select * from livros', function(err, results) {
+        connection.query('select * from livros', function(erros, resultados) {
             res.render('produtos/lista');
         });
 
@@ -14,9 +13,9 @@ module.exports = function(app) {
 
     app.get('/tabela', function(req, res) {
         console.log("testando 02");
-        var connection = connectionFactory();
+        var connection = app.infra.connectionFactory();
 
-        connection.query('select * from livros', function(err, results) {
+        connection.query('select * from livros', function(erros, resultados) {
             res.render('produtos/tabela-01/tabela');
         });
 

@@ -1,9 +1,12 @@
 var mysql = require('mysql');
-module.exports = function() {
+var connectMYSQL = function() {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
         password: '',
         database: 'casadocodigo'
     });
+};
+module.exports = function(){
+    return connectMYSQL;
 };
