@@ -15,14 +15,7 @@ module.exports = function(app) {
 
 
 
-    app.get('/tabela', function(req, res) {
-        console.log("testando 02");
-        var connection = app.infra.connectionFactory();
-
-        connection.query('select * from livros', function(erros, resultados) {
-            res.render('produtos/tabela-01/tabela');
-        });
-
-        connection.end();
+    app.get('/produtos/form', function(req, res) {
+        res.render('produtos/form');
     });
 };
