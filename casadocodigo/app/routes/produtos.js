@@ -2,14 +2,26 @@ module.exports = function(app) {
     app.get('/produtos', function(req,res){
         console.log("testando");
         var connection = app.infra.connectionFactory();
-        var produtosBanco = app.infra.produtosBanco;
+        var produtosBanco = app.infra.produtosBanco(connection);
 
-        produtosBanco.lista(connection,function(erros, resultados) {
+        produtosBanco.lista(function(erros, resultados) {
             res.render('produtos/lista');
         });
 
         connection.end();
     });
+
+    app.get('produtos/remove',function(){
+        var connection = app.infra.connectionFactory();
+        var produtosBanco = app.infra.produtosBanco(connection);
+        var produtos = produtosBanco.carrega(id,callback);
+        if(produto){
+            produtosBanco.remove(connection,produto,callback);
+        }
+    });
+
+
+
 
     app.get('/tabela', function(req, res) {
         console.log("testando 02");
